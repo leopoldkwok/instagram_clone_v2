@@ -23,6 +23,22 @@ RSpec.describe Post, :type => :model do
 			expect(post.tags.count).to eq 2
 		end
 	end
+
+	context 'with existing tags' do 
+		before {Tag.create(text: '#yolo')}
+
+		it 'reuses them' do
+			post.tag_list = '#yolo, #swag'
+			expect(Tag.count).to eq 2
+		end
+	end
+
+	context 'with duplicate tags' do 
+		it 'deduplicate them' do 
+			post.tag_list = '#yolo, #swag, #yolo'
+			expect(post.tags.count).to eq 2
+		end
+	end
 end
 
 end
