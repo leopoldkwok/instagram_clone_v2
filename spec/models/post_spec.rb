@@ -16,6 +16,13 @@ RSpec.describe Post, :type => :model do
   			expect(post.tags.first.text).to eq '#yolo'
   		end
 	end
+
+	context 'multiple tags' do 
+		it 'adds all the tags separately' do 
+			post.tag_list = '#yolo, #swag'
+			expect(post.tags.count).to eq 2
+		end
+	end
 end
 
 end
