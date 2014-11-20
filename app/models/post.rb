@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
 	def tag_list
 	end
 
-	def tag_list=(some_tags)
+	def tag_list=(some_tags) 
 		return if some_tags.empty?
 
 		some_tags.split(', ').uniq.each do |tag|

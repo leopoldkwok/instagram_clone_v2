@@ -1,8 +1,14 @@
 <% if @posts.any? %>
 	<% @posts.each do |post| %>
 		<h3> <%= post.title %></h3>
+	<% if post.picture.present? %>	
 		<%= image_tag post.picture.url(:medium), class: 'uploaded-pic' %>
 	<% end %>
+
+	<% post.tags.each do |tag| %>
+		<%= link_to tag.text, '#' %>
+	<% end %>
+<% end %>
 <% else %>
 	No posts yet
 <% end %>
